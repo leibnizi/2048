@@ -12,7 +12,19 @@ $(document).ready(function(){
     prepareForMobile()
     //开始游戏
     newGame()
+    restart()
 })
+
+var restart = function () {
+    var fresh = document.querySelector('.newGame')
+    fresh.addEventListener('click', function(event){
+        console.log(123)
+        var target = event.target
+        if (target.classList.contains('newGame')) {
+            newGame()
+        }
+    })
+}
 
 var prepareForMobile = function() {
     if (documentWidth > 500) {
@@ -30,7 +42,7 @@ var prepareForMobile = function() {
     }
     //监听touchstart
     document.addEventListener('touchstart', function(event){
-        event.preventDefault()
+        // event.preventDefault()
         startX = event.touches[0].pageX
         startY = event.touches[0].pageY
         // console.log('touches', event.touches)
@@ -185,7 +197,7 @@ var generateOneNumber = function() {
 
 $(document).keydown(function(event){
     //阻止按键默认效果
-    event.preventDefault()
+    // event.preventDefault()
 
     switch (event.keyCode) {
         case 37:
